@@ -101,7 +101,7 @@ function Checkout() {
       <div className="space-y-10">
         <div>
           <h1 className="font-display text-4xl">Checkout</h1>
-          <p className="text-sm text-muted-foreground mt-2">Pick how you want to pay. All Stripe-secured.</p>
+          <p className="text-sm text-muted-foreground mt-2">Pick how you want to pay. Online payments coming soon.</p>
         </div>
 
         <div>
