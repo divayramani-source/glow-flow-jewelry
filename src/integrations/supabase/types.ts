@@ -14,7 +14,144 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      custom_orders: {
+        Row: {
+          created_at: string
+          custom_name: string
+          id: string
+          metal: string
+          notes: string | null
+          reference_image_url: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          custom_name: string
+          id?: string
+          metal: string
+          notes?: string | null
+          reference_image_url?: string | null
+          status?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          custom_name?: string
+          id?: string
+          metal?: string
+          notes?: string | null
+          reference_image_url?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          id: string
+          items: Json
+          notes: string | null
+          payment_method: string
+          shipping_address: string
+          shipping_city: string
+          shipping_name: string
+          shipping_zip: string
+          status: string
+          total_cents: number
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          items: Json
+          notes?: string | null
+          payment_method: string
+          shipping_address: string
+          shipping_city: string
+          shipping_name: string
+          shipping_zip: string
+          status?: string
+          total_cents: number
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          items?: Json
+          notes?: string | null
+          payment_method?: string
+          shipping_address?: string
+          shipping_city?: string
+          shipping_name?: string
+          shipping_zip?: string
+          status?: string
+          total_cents?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          featured: boolean | null
+          id: string
+          image_url: string | null
+          metals: string[]
+          name: string
+          price_cents: number
+          slug: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          featured?: boolean | null
+          id?: string
+          image_url?: string | null
+          metals?: string[]
+          name: string
+          price_cents: number
+          slug: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          featured?: boolean | null
+          id?: string
+          image_url?: string | null
+          metals?: string[]
+          name?: string
+          price_cents?: number
+          slug?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
