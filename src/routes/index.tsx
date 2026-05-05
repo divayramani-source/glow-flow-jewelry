@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, Diamond, Star } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import bgChrome from "@/assets/bg-chrome.jpg";
-import { listProducts } from "@/server/products.functions";
+import { listProducts, type Product } from "@/server/products.functions";
 import { formatUSD, metalSwatch, productImages } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const products = Route.useLoaderData();
+  const products = Route.useLoaderData() as Product[];
   const featured = products.filter((p) => p.featured).slice(0, 3);
 
   return (
