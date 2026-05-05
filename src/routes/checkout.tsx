@@ -161,7 +161,7 @@ function Checkout() {
           disabled={busy}
           className="mt-6 w-full h-12 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-widest glow disabled:opacity-60"
         >
-          {busy ? "Placing…" : method === "cod" ? "Place COD order" : "Continue to payment"}
+          {busy ? "Placing…" : method === "cod" ? "Place COD order" : "Place order"}
         </button>
         <p className="text-[10px] text-muted-foreground mt-3 text-center uppercase tracking-widest">
           {method === "cod" ? "Pay on delivery" : "Payment instructions sent after order"}
