@@ -26,6 +26,3 @@ export const metalSwatch = (m: string) =>
 
 export const formatUSD = (cents: number) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(cents / 100);
-
-export const resolveImage = (slug: string, fallback: string | null): string =>
-  productImages[slug] ?? fallback ?? "";

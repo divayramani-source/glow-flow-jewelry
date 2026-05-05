@@ -1,6 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
-
+import { productImages } from "@/lib/products";
 
 export type Product = {
   id: string;
@@ -36,3 +36,6 @@ export const getProduct = createServerFn({ method: "GET" })
     return row as Product | null;
   });
 
+// Helper to resolve client-side asset path
+export const resolveImage = (slug: string, fallback: string | null) =>
+  productImages[slug] ?? fallback ?? "";
