@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowRight, Sparkles, Truck, ShieldCheck, Diamond, Star } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import bgChrome from "@/assets/bg-chrome.jpg";
-import { listProducts, type Product } from "@/server/products.functions";
+import { listProducts, type Product } from "~/server/products.functions";
 import { formatUSD, metalSwatch, productImages } from "@/lib/products";
 
 export const Route = createFileRoute("/")({
