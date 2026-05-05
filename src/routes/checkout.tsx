@@ -16,9 +16,9 @@ export const Route = createFileRoute("/checkout")({
 type Method = "lump_sum" | "part_payment" | "financing" | "cod";
 
 const methods: { id: Method; t: string; d: string; icon: typeof Banknote }[] = [
-  { id: "lump_sum", t: "Pay in full", d: "One-time card payment via Stripe.", icon: Banknote },
+  { id: "lump_sum", t: "Pay in full", d: "We'll email a secure payment link.", icon: Banknote },
   { id: "part_payment", t: "Part payment", d: "30% deposit now, balance on ship.", icon: Coins },
-  { id: "financing", t: "Financing / EMI", d: "Affirm or Klarna at checkout, 0% APR available.", icon: CalendarClock },
+  { id: "financing", t: "Financing / EMI", d: "Split it monthly — we'll send terms.", icon: CalendarClock },
   { id: "cod", t: "Cash on delivery", d: "Pay when it arrives. US only, $1k cap.", icon: Truck },
 ];
 
