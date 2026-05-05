@@ -58,10 +58,13 @@ function Checkout() {
     }
     setBusy(true);
     try {
+      const payment_status =
+        method === "cod" ? "cod_pending" : method === "part_payment" ? "partial" : "unpaid";
       const { error } = await supabase.from("orders").insert({
         user_id: user.id,
         total_cents: total,
         payment_method: method,
+        payment_status,
         status: method === "cod" ? "confirmed" : "awaiting_payment",
         shipping_name: form.name,
         shipping_address: form.address,
@@ -77,7 +80,7 @@ function Checkout() {
       });
       if (error) throw error;
       clear();
-      toast.success("Order placed! Check your email.");
+      toast.success("Order placed! We'll be in touch with payment details.");
       nav({ to: "/account" });
     } catch (e) {
       toast.error((e as Error).message);
