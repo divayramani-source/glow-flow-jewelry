@@ -31,7 +31,7 @@ function Account() {
   useEffect(() => {
     if (!user) return;
     supabase.from("orders").select("*").order("created_at", { ascending: false })
-      .then(({ data }) => setOrders((data ?? []) as Order[]));
+      .then(({ data }) => setOrders((data ?? []) as unknown as Order[]));
   }, [user]);
 
   const signOut = async () => {
