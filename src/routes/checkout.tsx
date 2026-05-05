@@ -164,7 +164,7 @@ function Checkout() {
           {busy ? "Placing…" : method === "cod" ? "Place COD order" : "Continue to payment"}
         </button>
         <p className="text-[10px] text-muted-foreground mt-3 text-center uppercase tracking-widest">
-          Stripe secured · 256-bit SSL
+          {method === "cod" ? "Pay on delivery" : "Payment instructions sent after order"}
         </p>
       </aside>
     </section>
