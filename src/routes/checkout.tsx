@@ -16,9 +16,9 @@ export const Route = createFileRoute("/checkout")({
 type Method = "lump_sum" | "part_payment" | "financing" | "cod";
 
 const methods: { id: Method; t: string; d: string; icon: typeof Banknote }[] = [
-  { id: "lump_sum", t: "Pay in full", d: "One-time card payment via Stripe.", icon: Banknote },
+  { id: "lump_sum", t: "Pay in full", d: "We'll email a secure payment link.", icon: Banknote },
   { id: "part_payment", t: "Part payment", d: "30% deposit now, balance on ship.", icon: Coins },
-  { id: "financing", t: "Financing / EMI", d: "Affirm or Klarna at checkout, 0% APR available.", icon: CalendarClock },
+  { id: "financing", t: "Financing / EMI", d: "Split it monthly — we'll send terms.", icon: CalendarClock },
   { id: "cod", t: "Cash on delivery", d: "Pay when it arrives. US only, $1k cap.", icon: Truck },
 ];
 
@@ -58,10 +58,13 @@ function Checkout() {
     }
     setBusy(true);
     try {
+      const payment_status =
+        method === "cod" ? "cod_pending" : method === "part_payment" ? "partial" : "unpaid";
       const { error } = await supabase.from("orders").insert({
         user_id: user.id,
         total_cents: total,
         payment_method: method,
+        payment_status,
         status: method === "cod" ? "confirmed" : "awaiting_payment",
         shipping_name: form.name,
         shipping_address: form.address,
@@ -77,7 +80,7 @@ function Checkout() {
       });
       if (error) throw error;
       clear();
-      toast.success("Order placed! Check your email.");
+      toast.success("Order placed! We'll be in touch with payment details.");
       nav({ to: "/account" });
     } catch (e) {
       toast.error((e as Error).message);
@@ -98,7 +101,7 @@ function Checkout() {
       <div className="space-y-10">
         <div>
           <h1 className="font-display text-4xl">Checkout</h1>
-          <p className="text-sm text-muted-foreground mt-2">Pick how you want to pay. All Stripe-secured.</p>
+          <p className="text-sm text-muted-foreground mt-2">Pick how you want to pay. Online payments coming soon.</p>
         </div>
 
         <div>
@@ -158,10 +161,10 @@ function Checkout() {
           disabled={busy}
           className="mt-6 w-full h-12 rounded-full bg-primary text-primary-foreground text-xs uppercase tracking-widest glow disabled:opacity-60"
         >
-          {busy ? "Placing…" : method === "cod" ? "Place COD order" : "Continue to payment"}
+          {busy ? "Placing…" : method === "cod" ? "Place COD order" : "Place order"}
         </button>
         <p className="text-[10px] text-muted-foreground mt-3 text-center uppercase tracking-widest">
-          Stripe secured · 256-bit SSL
+          {method === "cod" ? "Pay on delivery" : "Payment instructions sent after order"}
         </p>
       </aside>
     </section>
