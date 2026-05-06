@@ -2,7 +2,7 @@ import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-ro
 import { useState } from "react";
 import { ShoppingBag, Sparkles, ShieldCheck, Truck } from "lucide-react";
 import { toast } from "sonner";
-import { getProduct, type Product } from "@/server/products.functions";
+import { getProduct, type Product } from "@/lib/products.functions";
 import { formatUSD, metalLabel, metalSwatch, productImages } from "@/lib/products";
 import { useCart } from "@/lib/cart";
 
