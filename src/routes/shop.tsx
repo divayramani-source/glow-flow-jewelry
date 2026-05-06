@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { listProducts, type Product } from "@/server/products.functions";
+import { listProducts, type Product } from "@/lib/products.functions";
 import { formatUSD, metalSwatch, resolveImage } from "@/lib/products";
 
 export const Route = createFileRoute("/shop")({
